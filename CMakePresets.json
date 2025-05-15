@@ -1,0 +1,57 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+      "major": 3,
+      "minor": 24,
+      "patch": 0
+    },
+    "configurePresets": [
+      {
+        "name": "stm32f429zi",
+        "hidden": false,
+        "generator": "Ninja Multi-Config",
+        "binaryDir": "${sourceDir}/build/stm32f429zi",
+        "cacheVariables": {
+          "CMAKE_TOOLCHAIN_FILE": "libs/amp-embedded-infra-lib/cmake/toolchain-arm-gcc-m4-fpv4-sp-d16.cmake",
+          "TARGET_CORTEX": "m4",
+          "TARGET_MCU_FAMILY": "stm32f4xx",
+          "TARGET_MCU": "stm32f429",
+          "TARGET_MCU_VENDOR": "st",
+          "HALST_BUILD_EXAMPLES": "ON"
+        }
+      },
+      {
+        "name": "host-tests",
+        "generator": "Ninja",
+        "binaryDir": "${sourceDir}/build/host-tests",
+        "cacheVariables": {
+          "TARGET_PLATFORM": "host",
+          "CMAKE_BUILD_TYPE": "Debug",
+          "HALST_BUILD_TESTS": "ON"
+        }
+      }
+    ],
+    "buildPresets": [
+      {
+        "name": "stm32f429zi-Debug",
+        "configurePreset": "stm32f429zi",
+        "configuration": "Debug"
+      },
+      {
+        "name": "host-tests-Debug",
+        "configurePreset": "host-tests",
+        "configuration": "Debug"
+      }
+    ],
+    "testPresets": [
+      {
+        "name": "host-tests-Debug",
+        "configurePreset": "host-tests",
+        "configuration": "Debug",
+        "output": {
+          "outputOnFailure": true
+        }
+      }
+    ]
+  }
+  

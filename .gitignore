@@ -1,0 +1,28 @@
+build
+wsl-ip
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+CTestTestfile.cmake
+*.cmake
+
+# Ninja
+.ninja_log
+.ninja_deps
+build.ninja
+rules.ninja
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# User/system files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.bak
+*~
